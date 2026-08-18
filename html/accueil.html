@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accueil</title>
+<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<header class="navbar">
+<button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
+<div class="brand">
+<span class="brand-text">Carredace</span>
+</div>
+</header>
+
+<div class="layout">
+<aside id="sidebar" class="sidebar" aria-hidden="false">
+<nav class="sidebar-nav" aria-label="Navigation principale">
+<a href="#offers" class="nav-item" data-tooltip="Offres" aria-label="Offres">
+<img class="icon" src="../images/icon-offers.svg" alt="">
+<span class="label">Offres</span>
+</a>
+<a href="#users" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
+<img class="icon" src="../images/icon-users.svg" alt="">
+<span class="label">Utilisateurs</span>
+</a>
+<a href="#payments" class="nav-item" data-tooltip="Paiements" aria-label="Paiements">
+<img class="icon" src="../images/icon-payments.svg" alt="">
+<span class="label">Paiements</span>
+</a>
+<a href="#settings" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
+<img class="icon" src="../images/icon-settings.svg" alt="">
+<span class="label">Paramètres</span>
+</a>
+</nav>
+</aside>
+
+<main class="content">
+<section class="card">
+<h2>Bienvenue</h2>
+<p>Page d'accueil — survolez les icônes du menu pour voir les tooltips.</p>
+</section>
+</main>
+</div>
+
+<div id="overlay" class="overlay" hidden></div>
+<script src="../js/ui.js"></script>
+</body>
+</html>

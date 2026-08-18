@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carretech — Connexion</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Connexion</h1>
+      <p>Connectez-vous avec Google pour continuer.</p>
+
+      <div id="g_id_onload"
+           data-client_id="REPLACE_WITH_GOOGLE_CLIENT_ID"
+           data-login_uri=""
+           data-auto_prompt="false">
+      </div>
+
+      <div class="g_id_signin" data-type="standard"></div>
+
+      <p class="note">Remarque: ceci est un prototype client-side. Pour une authentification sécurisée, configurez OAuth 2.0 côté serveur et remplacez le Client ID.</p>
+    </section>
+  </main>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../js/google-signin.js"></script>
+</body>
+</html>
+
