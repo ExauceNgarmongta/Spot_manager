@@ -1,47 +1,55 @@
-// Prototype client-side pour afficher le bouton Google Identity Services.
-// Remplacez 'REPLACE_WITH_GOOGLE_CLIENT_ID' dans le HTML par votre Client ID réel.
+// Mode lecture publique par défaut.
+// L'authentification Google ne s'active que si un vrai Client ID est fourni.
 
 function handleCredentialResponse(response){
-  // Ici on reçoit le credential JWT côté client. Pour un vrai flux sécurisé,
-  // envoyez-le à votre serveur pour vérification et création de session.
   console.log('ID token reçu (exemple):', response.credential);
-  // Afficher un message basique
   const card = document.querySelector('.card');
+  if (!card) return;
+
   const p = document.createElement('p');
   p.textContent = 'Connexion réussie (prototype). Token reçu côté client.';
   p.style.color = 'green';
   card.appendChild(p);
 }
 
-window.onload = function(){
-  if(window.google && google.accounts && google.accounts.id){
+window.addEventListener('DOMContentLoaded', function(){
+  const signInEl = document.querySelector('.g_id_signin');
+  const onloadEl = document.getElementById('g_id_onload');
+  const clientId = onloadEl ? onloadEl.dataset.client_id : '';
+  const hasValidClientId = Boolean(clientId) && clientId !== 'REPLACE_WITH_GOOGLE_CLIENT_ID';
+
+  if (!hasValidClientId) {
+    if (signInEl) signInEl.style.display = 'none';
+    const customBtn = document.getElementById('custom-google-btn');
+    if (customBtn) customBtn.style.display = 'none';
+    console.info('Mode lecture activé : aucune connexion requise pour lire le contenu.');
+    return;
+  }
+
+  if (window.google && google.accounts && google.accounts.id) {
     google.accounts.id.initialize({
-      client_id: 'REPLACE_WITH_GOOGLE_CLIENT_ID',
+      client_id: clientId,
       callback: handleCredentialResponse,
     });
 
-    google.accounts.id.renderButton(
-      document.querySelector('.g_id_signin'),
-      { theme: 'outline', size: 'large' }
-    );
+    if (signInEl) {
+      google.accounts.id.renderButton(signInEl, { theme: 'outline', size: 'large' });
+    }
 
-    // Optionnel: prompt automatique
-    // google.accounts.id.prompt();
-    // Exposer une fonction pour le bouton custom
     window.customSignIn = function(){
-      try{
+      try {
         google.accounts.id.prompt();
-      }catch(e){
+      } catch (e) {
         console.warn('Impossible de lancer google.accounts.id.prompt()', e);
       }
     };
 
-    // Lier le bouton fallback si présent
     const customBtn = document.getElementById('custom-google-btn');
-    if(customBtn) customBtn.addEventListener('click', function(e){
-      e.preventDefault(); window.customSignIn();
+    if (customBtn) customBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.customSignIn();
     });
   } else {
-    console.warn('Google Identity Services non chargé. Vérifiez la connexion réseau.');
+    console.warn('Google Identity Services non chargé. Le mode lecture reste accessible sans connexion.');
   }
-};
+});

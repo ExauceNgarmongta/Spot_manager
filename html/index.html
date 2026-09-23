@@ -3,24 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Carretech — Connexion</title>
+  <title>Carretech — Lecture</title>
   <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
   <main class="container">
     <section class="card">
-      <h1>Connexion</h1>
-      <p>Connectez-vous avec Google pour continuer.</p>
+      <h1>Lecture publique</h1>
+      <p>Vous pouvez lire les contenus sans être connecté.</p>
 
-      <div id="g_id_onload"
-           data-client_id="REPLACE_WITH_GOOGLE_CLIENT_ID"
-           data-login_uri=""
-           data-auto_prompt="false">
+      <div class="actions">
+        <a href="./es.html" class="primary-btn">Ouvrir la page de lecture</a>
       </div>
 
-      <div class="g_id_signin" data-type="standard"></div>
-
-      <p class="note">Remarque: ceci est un prototype client-side. Pour une authentification sécurisée, configurez OAuth 2.0 côté serveur et remplacez le Client ID.</p>
+      <p class="note">Le mode connexion Google est désactivé par défaut. Il ne sera réactivé que si un vrai Client ID OAuth est configuré côté serveur.</p>
     </section>
   </main>
 

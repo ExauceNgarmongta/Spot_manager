@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpotManager — Offres</title>
+<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<header class="navbar">
+  <button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
+  <div class="brand">
+    <span class="brand-text">SpotManager</span>
+  </div>
+  <div class="header-actions">
+    <button class="toolbar-select" type="button" aria-label="Sélectionner la zone">
+      <span>TND WIFIZONE</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <button class="toolbar-btn success" type="button" aria-label="Portal Captif">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>
+      <span>Portal Captif</span>
+    </button>
+
+    <button class="toolbar-btn add" type="button" aria-label="Ajouter une offre">+</button>
+    <button class="toolbar-btn mini" type="button" aria-label="Exporter">↑</button>
+
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème">
+      <span class="theme-icon" aria-hidden="true">☾</span>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar" aria-hidden="false">
+    <nav class="sidebar-nav" aria-label="Navigation principale">
+      <a href="accueil.html" class="nav-item" data-tooltip="Accueil" aria-label="Accueil">
+        <img class="icon" src="../images/icon-home.svg" alt="">
+        <span class="label">Accueil</span>
+      </a>
+      <a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres">
+        <img class="icon" src="../images/icon-offers.svg" alt="">
+        <span class="label">Offres</span>
+      </a>
+      <a href="paiements.html" class="nav-item" data-tooltip="Paiements" aria-label="Paiements">
+        <img class="icon" src="../images/icon-payments.svg" alt="">
+        <span class="label">Paiements</span>
+      </a>
+      <a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
+        <img class="icon" src="../images/icon-users.svg" alt="">
+        <span class="label">Utilisateurs</span>
+      </a>
+      <a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
+        <img class="icon" src="../images/icon-settings.svg" alt="">
+        <span class="label">Paramètres</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="content offers-page">
+    <div class="offers-header-row">
+      <div>
+        <h1>Offres</h1>
+        <p>Vos offres d'accès WiFi</p>
+      </div>
+    </div>
+
+    <div class="offer-grid">
+      <article class="offer-item" data-offer-id="1">
+        <div class="offer-header">
+          <div class="offer-amount">100f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 2.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 100</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="2">
+        <div class="offer-header">
+          <div class="offer-amount">150f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 3.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 150</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="3">
+        <div class="offer-header">
+          <div class="offer-amount">200f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 5.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 200</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="4">
+        <div class="offer-header">
+          <div class="offer-amount">250f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> Illimité</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 250</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="5">
+        <div class="offer-header">
+          <div class="offer-amount">500f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 7 jours</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 20.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 500</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="6">
+        <div class="offer-header">
+          <div class="offer-amount">1000f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 7 jours</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 30.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 1000</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="7">
+        <div class="offer-header">
+          <div class="offer-amount">1500f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 15 jours</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 50.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 1500</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="8">
+        <div class="offer-header">
+          <div class="offer-amount">2000f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 30 jours</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> 100.0 GB</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 2000</div>
+      </article>
+
+      <article class="offer-item" data-offer-id="9">
+        <div class="offer-header">
+          <div class="offer-amount">3000f</div>
+          <div class="offer-actions">
+            <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
+            <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
+            <button type="button" class="mini-action" data-action="delete" aria-label="Supprimer">🗑</button>
+          </div>
+        </div>
+
+        <div class="offer-status-row">
+          <span class="status-text">Actif</span>
+          <button type="button" class="offer-switch is-on" aria-label="Activer ou désactiver" aria-pressed="true">
+            <span class="switch-thumb"></span>
+          </button>
+          <span class="portal-pill">Portal</span>
+        </div>
+
+        <div class="detail-row"><span class="detail-icon">◔</span> 30 jours</div>
+        <div class="detail-row"><span class="detail-icon">◉</span> Illimité</div>
+        <div class="detail-row price-row"><span class="detail-icon">F</span> 3000</div>
+      </article>
+    </div>
+  </main>
+</div>
+
+<script src="../js/ui.js"></script>
+</body>
+</html>

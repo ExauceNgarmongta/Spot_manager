@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpotManager — Paramètres</title>
+<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<header class="navbar">
+  <button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
+  <div class="brand">
+    <span class="brand-text">SpotManager</span>
+  </div>
+  <div class="header-actions">
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème">
+      <span class="theme-icon" aria-hidden="true">☾</span>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar" aria-hidden="false">
+    <nav class="sidebar-nav" aria-label="Navigation principale">
+      <a href="accueil.html" class="nav-item" data-tooltip="Accueil" aria-label="Accueil">
+        <img class="icon" src="../images/icon-home.svg" alt="">
+        <span class="label">Accueil</span>
+      </a>
+      <a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres">
+        <img class="icon" src="../images/icon-offers.svg" alt="">
+        <span class="label">Offres</span>
+      </a>
+      <a href="paiements.html" class="nav-item" data-tooltip="Paiements" aria-label="Paiements">
+        <img class="icon" src="../images/icon-payments.svg" alt="">
+        <span class="label">Paiements</span>
+      </a>
+      <a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
+        <img class="icon" src="../images/icon-users.svg" alt="">
+        <span class="label">Utilisateurs</span>
+      </a>
+      <a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
+        <img class="icon" src="../images/icon-settings.svg" alt="">
+        <span class="label">Paramètres</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section class="page-header">
+      <div>
+        <p class="eyebrow">Configuration</p>
+        <h1>Paramètres</h1>
+      </div>
+    </section>
+
+    <section class="panel page-panel">
+      <div class="settings-list">
+        <div class="setting-item">
+          <span>Nom de l’entreprise</span>
+          <strong>SpotManager</strong>
+        </div>
+        <div class="setting-item">
+          <span>Langue</span>
+          <strong>Français</strong>
+        </div>
+        <div class="setting-item">
+          <span>Devise</span>
+          <strong>Euro (€)</strong>
+        </div>
+        <div class="setting-item">
+          <span>Notifications</span>
+          <strong>Activées</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="../js/ui.js"></script>
+</body>
+</html>

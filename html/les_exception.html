@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Exceptions en Python</title>
+  <style>
+    /* --- petit rafraîchissement visuel de la page de lecture --- */
+    body {
+      background: #f4f7fb;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2d3d;
+    }
+
+    .site-content,
+    .content-area,
+    #primary {
+      background: transparent;
+    }
+
+    .entry-content {
+      background: #ffffff;
+      border: 1px solid #dfe7f3;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(15, 59, 98, 0.08);
+      max-width: 980px;
+      margin: 42px auto;
+      padding: 1.5rem 1.6rem !important;
+      line-height: 1.8;
+    }
+
+    .entry-content p,
+    .entry-content li,
+    .entry-content td,
+    .entry-content th {
+      color: #1f2d3d;
+      font-size: 1rem;
+    }
+
+    .entry-content h1,
+    .entry-content h2,
+    .entry-content h3,
+    .entry-content h4 {
+      color: #0f3b62;
+      background: linear-gradient(90deg, rgba(9,117,195,0.12), rgba(9,117,195,0.03));
+      border-left: 4px solid #0975C3;
+      border-radius: 10px 10px 0 10px;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+
+    .entry-content a {
+      color: #0d67c2;
+      text-decoration: none;
+    }
+
+    .entry-content a:hover {
+      text-decoration: underline;
+    }
+
+    .entry-content blockquote,
+    .def,
+    .theo,
+    .alert,
+    .prop,
+    .remark,
+    .example,
+    .quiz {
+      box-shadow: 0 4px 12px rgba(15, 59, 98, 0.05);
+    }
+
+    .syntaxhighlighter,
+    pre,
+    code {
+      border-radius: 10px;
+      overflow-x: auto;
+      background: #f5f7fa;
+      padding: 0.8rem 1rem;
+    }
+
+    .entry-content img {
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .entry-content {
+        padding: 1rem !important;
+        border-radius: 12px;
+        margin: 20px 12px;
+      }
+
+      .entry-content h1,
+      .entry-content h2,
+      .entry-content h3,
+      .entry-content h4 {
+        font-size: 1.2rem;
+        padding: 0.65rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="site-content" role="main">
+    <article class="entry-content">
+      <h1>Les Exceptions en Python</h1>
+
+      <p>Les exceptions permettent de gérer les erreurs sans interrompre brutalement l’exécution d’un programme.</p>
+
+      <h2>Pourquoi utiliser une exception ?</h2>
+      <p>Quand un programme rencontre une situation inattendue, il peut lever une exception. Cela permet d’afficher un message clair et de continuer ou d’arrêter proprement le script.</p>
+
+      <h2>Exemple simple</h2>
+      <pre><code>try:
+    nombre = int("abc")
+except ValueError:
+    print("Erreur : valeur invalide.")</code></pre>
+
+      <h2>Bloc <code>try</code> / <code>except</code></h2>
+      <p>Le code risqué est placé dans le bloc <code>try</code>. Les erreurs sont traitées par un ou plusieurs blocs <code>except</code>.</p>
+
+      <h2>Instruction <code>raise</code></h2>
+      <p>On peut aussi déclencher soi-même une exception avec <code>raise</code> pour signaler une condition spéciale.</p>
+
+      <pre><code>age = -2
+if age &lt; 0:
+    raise ValueError("L'âge ne peut pas être négatif.")</code></pre>
+
+      <h2>Bloc <code>finally</code></h2>
+      <p>Le bloc <code>finally</code> s’exécute toujours, que l’exception soit levée ou non. Il est utile pour fermer des fichiers ou libérer des ressources.</p>
+    </article>
+  </main>
+</body>
+</html>

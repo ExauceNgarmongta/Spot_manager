@@ -10,26 +10,35 @@
 <header class="navbar">
 <button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
 <div class="brand">
-<span class="brand-text">Carredace</span>
+<span class="brand-text">SpotManager</span>
+</div>
+<div class="header-actions">
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème">
+    <span class="theme-icon" aria-hidden="true">☾</span>
+  </button>
 </div>
 </header>
 
 <div class="layout">
 <aside id="sidebar" class="sidebar" aria-hidden="false">
 <nav class="sidebar-nav" aria-label="Navigation principale">
-<a href="#offers" class="nav-item" data-tooltip="Offres" aria-label="Offres">
+<a href="accueil.html" class="nav-item" data-tooltip="Accueil" aria-label="Accueil">
+<img class="icon" src="../images/icon-home.svg" alt="">
+<span class="label">Accueil</span>
+</a>
+<a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres">
 <img class="icon" src="../images/icon-offers.svg" alt="">
 <span class="label">Offres</span>
 </a>
-<a href="#users" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
-<img class="icon" src="../images/icon-users.svg" alt="">
-<span class="label">Utilisateurs</span>
-</a>
-<a href="#payments" class="nav-item" data-tooltip="Paiements" aria-label="Paiements">
+<a href="paiements.html" class="nav-item" data-tooltip="Paiements" aria-label="Paiements">
 <img class="icon" src="../images/icon-payments.svg" alt="">
 <span class="label">Paiements</span>
 </a>
-<a href="#settings" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
+<a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
+<img class="icon" src="../images/icon-users.svg" alt="">
+<span class="label">Utilisateurs</span>
+</a>
+<a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
 <img class="icon" src="../images/icon-settings.svg" alt="">
 <span class="label">Paramètres</span>
 </a>
@@ -37,10 +46,82 @@
 </aside>
 
 <main class="content">
-<section class="card">
-<h2>Bienvenue</h2>
-<p>Page d'accueil — survolez les icônes du menu pour voir les tooltips.</p>
-</section>
+  <section class="dashboard-header">
+    <div>
+      <p class="eyebrow">Tableau de bord</p>
+      <h1>Vue d'ensemble</h1>
+    </div>
+    <a href="offres.html" class="button-primary small">Gérer les offres</a>
+  </section>
+
+  <section class="stats-grid">
+    <article class="stat-card">
+      <span class="stat-label">Revenus</span>
+      <strong class="stat-value">12 480 €</strong>
+      <span class="stat-trend positive">+12.4% ce mois</span>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Offres actives</span>
+      <strong class="stat-value">128</strong>
+      <span class="stat-trend positive">+8 nouvelles</span>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Utilisateurs</span>
+      <strong class="stat-value">3 240</strong>
+      <span class="stat-trend positive">+145 aujourd'hui</span>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Paiements</span>
+      <strong class="stat-value">94%</strong>
+      <span class="stat-trend neutral">Taux de succès</span>
+    </article>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="panel panel-wide">
+      <div class="panel-header">
+        <h2>Offres récentes</h2>
+        <a href="offres.html">Voir tout</a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Starter</td>
+            <td>49 €</td>
+            <td><span class="badge success">Active</span></td>
+          </tr>
+          <tr>
+            <td>Business</td>
+            <td>99 €</td>
+            <td><span class="badge success">Active</span></td>
+          </tr>
+          <tr>
+            <td>Premium</td>
+            <td>199 €</td>
+            <td><span class="badge warning">À tester</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="panel">
+      <div class="panel-header">
+        <h2>Activité</h2>
+      </div>
+      <ul class="activity-list">
+        <li><span class="dot blue"></span> 12 nouveaux abonnés</li>
+        <li><span class="dot green"></span> 7 paiements validés</li>
+        <li><span class="dot orange"></span> 3 offres mises à jour</li>
+      </ul>
+    </article>
+  </section>
 </main>
 </div>
 
