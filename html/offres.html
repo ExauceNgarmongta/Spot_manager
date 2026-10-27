@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr-CM">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,14 +18,6 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </button>
 
-    <button class="toolbar-btn success" type="button" aria-label="Portal Captif">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>
-      <span>Portal Captif</span>
-    </button>
-
-    <button class="toolbar-btn add" type="button" aria-label="Ajouter une offre">+</button>
-    <button class="toolbar-btn mini" type="button" aria-label="Exporter">↑</button>
-
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème">
       <span class="theme-icon" aria-hidden="true">☾</span>
     </button>
@@ -39,7 +31,7 @@
         <img class="icon" src="../images/icon-home.svg" alt="">
         <span class="label">Accueil</span>
       </a>
-      <a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres">
+      <a href="offres.html" class="nav-item active" data-tooltip="Offres" aria-label="Offres" aria-current="page">
         <img class="icon" src="../images/icon-offers.svg" alt="">
         <span class="label">Offres</span>
       </a>
@@ -50,6 +42,14 @@
       <a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs">
         <img class="icon" src="../images/icon-users.svg" alt="">
         <span class="label">Utilisateurs</span>
+      </a>
+      <a href="tickets.html" class="nav-item" data-tooltip="Tickets" aria-label="Tickets">
+        <img class="icon" src="../images/icon-tickets.svg" alt="">
+        <span class="label">Tickets</span>
+      </a>
+      <a href="admin.html" class="nav-item" data-tooltip="Réseau" aria-label="Réseau">
+      <img class="icon" src="../images/icon-network.svg" alt="">
+      <span class="label">Réseau</span>
       </a>
       <a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres">
         <img class="icon" src="../images/icon-settings.svg" alt="">
@@ -64,12 +64,15 @@
         <h1>Offres</h1>
         <p>Vos offres d'accès WiFi</p>
       </div>
+      <button id="offer-create-open" class="offer-create-button" type="button">
+        <span aria-hidden="true">＋</span> Nouvelle offre
+      </button>
     </div>
 
-    <div class="offer-grid">
+    <div class="offer-grid" id="offer-grid" aria-live="polite" hidden>
       <article class="offer-item" data-offer-id="1">
         <div class="offer-header">
-          <div class="offer-amount">100f</div>
+          <div class="offer-amount">100 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -87,12 +90,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 2.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 100</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 100 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="2">
         <div class="offer-header">
-          <div class="offer-amount">150f</div>
+          <div class="offer-amount">150 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -110,12 +113,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 3.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 150</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 150 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="3">
         <div class="offer-header">
-          <div class="offer-amount">200f</div>
+          <div class="offer-amount">200 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -133,12 +136,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 5.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 200</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 200 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="4">
         <div class="offer-header">
-          <div class="offer-amount">250f</div>
+          <div class="offer-amount">250 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -156,12 +159,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 1 jour</div>
         <div class="detail-row"><span class="detail-icon">◉</span> Illimité</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 250</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 250 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="5">
         <div class="offer-header">
-          <div class="offer-amount">500f</div>
+          <div class="offer-amount">500 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -179,12 +182,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 7 jours</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 20.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 500</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 500 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="6">
         <div class="offer-header">
-          <div class="offer-amount">1000f</div>
+          <div class="offer-amount">1 000 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -202,12 +205,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 7 jours</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 30.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 1000</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 1 000 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="7">
         <div class="offer-header">
-          <div class="offer-amount">1500f</div>
+          <div class="offer-amount">1 500 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -225,12 +228,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 15 jours</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 50.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 1500</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 1 500 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="8">
         <div class="offer-header">
-          <div class="offer-amount">2000f</div>
+          <div class="offer-amount">2 000 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -248,12 +251,12 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 30 jours</div>
         <div class="detail-row"><span class="detail-icon">◉</span> 100.0 GB</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 2000</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 2 000 FCFA</div>
       </article>
 
       <article class="offer-item" data-offer-id="9">
         <div class="offer-header">
-          <div class="offer-amount">3000f</div>
+          <div class="offer-amount">3 000 FCFA</div>
           <div class="offer-actions">
             <button type="button" class="mini-action" data-action="copy" aria-label="Dupliquer">⧉</button>
             <button type="button" class="mini-action" data-action="edit" aria-label="Modifier">✎</button>
@@ -271,12 +274,72 @@
 
         <div class="detail-row"><span class="detail-icon">◔</span> 30 jours</div>
         <div class="detail-row"><span class="detail-icon">◉</span> Illimité</div>
-        <div class="detail-row price-row"><span class="detail-icon">F</span> 3000</div>
+        <div class="detail-row price-row"><span class="detail-icon">FCFA</span> 3 000 FCFA</div>
       </article>
     </div>
   </main>
 </div>
 
+<dialog class="offer-dialog" id="offers-auth-dialog" aria-labelledby="offers-auth-title">
+  <form id="offers-auth-form">
+    <div class="offer-dialog-heading">
+      <div>
+        <p class="offer-dialog-kicker">Accès protégé</p>
+        <h2 id="offers-auth-title">Connexion administrateur</h2>
+      </div>
+      <button class="offer-dialog-close" type="button" data-close-auth-dialog aria-label="Fermer">×</button>
+    </div>
+    <label class="offer-token-field">Jeton administrateur
+      <input name="token" type="password" required autocomplete="current-password">
+    </label>
+    <p class="offer-form-error" id="offers-auth-error" role="alert" hidden></p>
+    <p class="offer-form-note">Utilisez le jeton défini dans le fichier config.local.php du serveur.</p>
+    <div class="offer-dialog-actions">
+      <button class="offer-form-button secondary" type="button" data-close-auth-dialog>Annuler</button>
+      <button class="offer-form-button primary" type="submit">Se connecter</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="offer-dialog" id="offer-dialog" aria-labelledby="offer-dialog-title">
+  <form id="offer-form" novalidate>
+    <div class="offer-dialog-heading">
+      <div>
+        <p class="offer-dialog-kicker">Forfait WiFi</p>
+        <h2 id="offer-dialog-title">Nouvelle offre</h2>
+      </div>
+      <button class="offer-dialog-close" type="button" data-close-offer-dialog aria-label="Fermer">×</button>
+    </div>
+    <div class="offer-form-grid">
+      <label>Prix (FCFA)
+        <input name="price" type="number" min="1" step="1" required inputmode="numeric">
+      </label>
+      <label>Durée (jours)
+        <input name="durationDays" type="number" min="1" step="1" required inputmode="numeric">
+      </label>
+      <label class="offer-quota-field">Volume (GB)
+        <input name="quotaGb" type="number" min="0.1" step="0.1" inputmode="decimal">
+      </label>
+      <label class="offer-unlimited">
+        <input name="unlimited" type="checkbox">
+        Volume illimité
+      </label>
+    </div>
+    <label class="offer-active">
+      <input name="active" type="checkbox" checked>
+      Offre active
+    </label>
+    <p class="offer-form-error" id="offer-form-error" role="alert" hidden></p>
+    <p class="offer-form-note">Les offres ayant le même prix, la même durée et le même volume ne peuvent pas être enregistrées deux fois.</p>
+    <div class="offer-dialog-actions">
+      <button class="offer-form-button secondary" type="button" data-close-offer-dialog>Annuler</button>
+      <button class="offer-form-button primary" type="submit">Enregistrer</button>
+    </div>
+  </form>
+</dialog>
+<div class="offer-toast" id="offer-toast" role="status" aria-live="polite"></div>
+
 <script src="../js/ui.js"></script>
+<script src="../js/offers.js"></script>
 </body>
 </html>

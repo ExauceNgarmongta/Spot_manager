@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr-CM">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SpotManager — Tickets</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="network-page">
+  <header class="navbar">
+    <button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
+    <div class="brand"><span class="brand-text">SpotManager</span></div>
+    <div class="header-actions">
+      <span class="admin-mode" id="connection-state"><span class="mode-dot"></span> Routeur déconnecté</span>
+      <button class="admin-button secondary-button" id="connect-router-open" type="button">Connecter le routeur</button>
+      <button class="admin-button secondary-button" id="disconnect-router" type="button" hidden>Déconnexion</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème"><span class="theme-icon" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-hidden="false">
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <a href="accueil.html" class="nav-item" data-tooltip="Accueil" aria-label="Accueil"><img class="icon" src="../images/icon-home.svg" alt=""><span class="label">Accueil</span></a>
+        <a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres"><img class="icon" src="../images/icon-offers.svg" alt=""><span class="label">Offres</span></a>
+        <a href="paiements.html" class="nav-item" data-tooltip="Paiements" aria-label="Paiements"><img class="icon" src="../images/icon-payments.svg" alt=""><span class="label">Paiements</span></a>
+        <a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs"><img class="icon" src="../images/icon-users.svg" alt=""><span class="label">Utilisateurs</span></a>
+        <a href="tickets.html" class="nav-item active" data-tooltip="Tickets" aria-label="Tickets" aria-current="page"><img class="icon" src="../images/icon-tickets.svg" alt=""><span class="label">Tickets</span></a>
+        <a href="admin.html" class="nav-item" data-tooltip="Réseau" aria-label="Réseau"><img class="icon" src="../images/icon-network.svg" alt=""><span class="label">Réseau</span></a>
+        <a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres"><img class="icon" src="../images/icon-settings.svg" alt=""><span class="label">Paramètres</span></a>
+      </nav>
+    </aside>
+
+    <main class="content admin-content">
+      <section class="page-header admin-heading">
+        <div><p class="eyebrow">Accès clients · Hotspot</p><h1>Tickets</h1><p class="heading-note">Créez les accès et suivez leur consommation sur le routeur.</p></div>
+      </section>
+
+      <div class="demo-notice" id="demo-notice" role="status">
+        <span class="notice-mark" aria-hidden="true">i</span>
+        <p><strong>Routeur non connecté.</strong> Connectez le routeur pour charger les tickets réels et en créer de nouveaux.</p>
+      </div>
+
+      <section class="network-stats ticket-stats" aria-label="Résumé des tickets">
+        <article class="network-stat"><span class="stat-kicker">Tickets trouvés</span><strong id="ticket-count">—</strong><span class="stat-caption">dans la liste affichée</span></article>
+        <article class="network-stat"><span class="stat-kicker">Actifs maintenant</span><strong id="active-count">—</strong><span class="stat-caption">sessions connectées</span></article>
+        <article class="network-stat alert-stat"><span class="stat-kicker">Quotas atteints</span><strong id="quota-alert-count">—</strong><span class="stat-caption">consommation à 100 %</span></article>
+        <article class="network-stat"><span class="stat-kicker">Actualisé à</span><strong id="last-check">—</strong><span class="stat-caption">heure locale</span></article>
+      </section>
+
+      <section class="admin-section" aria-labelledby="tickets-title">
+        <div class="section-heading admin-section-heading">
+          <div><p class="eyebrow">Gestion des accès</p><h2 id="tickets-title">Tous les tickets</h2></div>
+          <div class="session-tools">
+            <label class="search-field" for="ticket-search"><span aria-hidden="true">⌕</span><input id="ticket-search" type="search" placeholder="Rechercher un ticket" autocomplete="off"></label>
+            <button class="admin-button secondary-button" id="refresh-tickets" type="button" title="Actualiser les tickets"><span aria-hidden="true">↻</span> Actualiser</button>
+            <button class="admin-button primary-button" id="create-ticket-open" type="button"><span aria-hidden="true">+</span> Créer un ticket</button>
+          </div>
+        </div>
+        <div class="table-frame">
+          <table class="admin-table ticket-table">
+            <thead><tr><th>Identifiant</th><th>Profil</th><th>Consommation volume</th><th>Temps restant</th><th>État</th></tr></thead>
+            <tbody id="ticket-rows"></tbody>
+          </table>
+          <p class="empty-state" id="ticket-empty" hidden></p>
+        </div>
+        <p class="table-footnote">La consommation est lue directement depuis les compteurs des comptes hotspot MikroTik.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="admin-dialog" id="ticket-dialog" aria-labelledby="ticket-dialog-title">
+    <form id="ticket-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Hotspot</p><h2 id="ticket-dialog-title">Créer un ticket</h2></div><button class="icon-button" type="button" data-close-dialog aria-label="Fermer">×</button></div>
+      <label>Identifiant du ticket<input name="username" required maxlength="40" autocomplete="off" placeholder="ticket4821"></label>
+      <label>Mot de passe<input name="password" required minlength="4" maxlength="64" autocomplete="new-password"></label>
+      <label>Profil<select name="profile" required><option value="offre-100F">100 FCFA — offre-100F</option><option value="offre-250F">250 FCFA — offre-250F</option><option value="offre-500F">500 FCFA — offre-500F</option></select></label>
+      <div class="form-grid"><label>Durée<input name="duration" required placeholder="1d"></label><label>Quota volume<input name="quota" required placeholder="500M"></label></div>
+      <p class="form-hint">Le compte est créé directement sur le routeur connecté. Vérifiez que le profil existe dans MikroTik.</p>
+      <div class="dialog-actions"><button class="admin-button secondary-button" type="button" data-close-dialog>Annuler</button><button class="admin-button primary-button" type="submit">Créer le ticket</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="admin-dialog" id="connect-dialog" aria-labelledby="connect-dialog-title">
+    <form id="connect-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Accès protégé</p><h2 id="connect-dialog-title">Connexion au routeur</h2></div><button class="icon-button" type="button" data-close-dialog aria-label="Fermer">×</button></div>
+      <label>Jeton administrateur<input name="token" type="password" required autocomplete="current-password" placeholder="Jeton défini dans config.local.php"></label>
+      <p class="form-hint">Le jeton reste en mémoire de session dans ce navigateur. Les identifiants MikroTik restent côté serveur.</p>
+      <div class="dialog-actions"><button class="admin-button secondary-button" type="button" data-close-dialog>Annuler</button><button class="admin-button primary-button" type="submit">Se connecter</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="admin-toast" role="status" aria-live="polite"></div>
+  <div id="overlay" class="overlay" hidden></div>
+  <script src="../js/ui.js"></script>
+  <script src="../js/tickets.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr-CM">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SpotManager — Administration réseau</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="network-page">
+  <header class="navbar">
+    <button id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Menu">☰</button>
+    <div class="brand"><span class="brand-text">SpotManager</span></div>
+    <div class="header-actions">
+      <span class="admin-mode" id="connection-state"><span class="mode-dot"></span> Mode démonstration</span>
+      <button class="admin-button secondary-button" id="connect-router-open" type="button">Connecter le routeur</button>
+      <button class="admin-button secondary-button" id="disconnect-router" type="button" hidden>Déconnexion</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer le thème" title="Basculer le thème">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-hidden="false">
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <a href="accueil.html" class="nav-item" data-tooltip="Accueil" aria-label="Accueil"><img class="icon" src="../images/icon-home.svg" alt=""><span class="label">Accueil</span></a>
+        <a href="offres.html" class="nav-item" data-tooltip="Offres" aria-label="Offres"><img class="icon" src="../images/icon-offers.svg" alt=""><span class="label">Offres</span></a>
+        <a href="paiements.html" class="nav-item" data-tooltip="Paiements" aria-label="Paiements"><img class="icon" src="../images/icon-payments.svg" alt=""><span class="label">Paiements</span></a>
+        <a href="utilisateurs.html" class="nav-item" data-tooltip="Utilisateurs" aria-label="Utilisateurs"><img class="icon" src="../images/icon-users.svg" alt=""><span class="label">Utilisateurs</span></a>
+        <a href="tickets.html" class="nav-item" data-tooltip="Tickets" aria-label="Tickets"><img class="icon" src="../images/icon-tickets.svg" alt=""><span class="label">Tickets</span></a>
+        <a href="admin.html" class="nav-item active" data-tooltip="Réseau" aria-label="Réseau" aria-current="page"><img class="icon" src="../images/icon-network.svg" alt=""><span class="label">Réseau</span></a>
+        <a href="parametres.html" class="nav-item" data-tooltip="Paramètres" aria-label="Paramètres"><img class="icon" src="../images/icon-settings.svg" alt=""><span class="label">Paramètres</span></a>
+      </nav>
+    </aside>
+
+    <main class="content admin-content">
+      <section class="page-header admin-heading">
+        <div>
+          <p class="eyebrow">Infrastructure · RouterOS v7</p>
+          <h1>Administration réseau</h1>
+          <p class="heading-note">Routeurs, accès hotspot et consommation en temps réel.</p>
+        </div>
+      </section>
+
+      <div class="demo-notice" id="demo-notice" role="status">
+        <span class="notice-mark" aria-hidden="true">i</span>
+        <p><strong>Aucun routeur connecté.</strong> Connectez-vous à l’API pour afficher les routeurs et sessions réellement remontés par MikroTik.</p>
+      </div>
+
+      <section class="network-stats" aria-label="État du réseau">
+        <article class="network-stat"><span class="stat-kicker">Routeurs en ligne</span><strong id="online-count">—</strong><span class="stat-caption">tunnels WireGuard actifs</span></article>
+        <article class="network-stat"><span class="stat-kicker">Sessions actives</span><strong id="session-count">—</strong><span class="stat-caption">comptes hotspot connectés</span></article>
+        <article class="network-stat alert-stat"><span class="stat-kicker">Alertes de quota</span><strong id="alert-count">—</strong><span class="stat-caption">consommation supérieure à 95 %</span></article>
+        <article class="network-stat"><span class="stat-kicker">Dernière vérification</span><strong id="last-check">—</strong><span class="stat-caption">actualisation locale</span></article>
+      </section>
+
+      <section class="admin-section" aria-labelledby="routers-title">
+        <div class="section-heading admin-section-heading">
+          <div><p class="eyebrow">Connectivité</p><h2 id="routers-title">Routeurs MikroTik</h2></div>
+          <button class="admin-button secondary-button" id="refresh-network" type="button" title="Actualiser depuis MikroTik"><span aria-hidden="true">↻</span> Actualiser</button>
+        </div>
+        <div class="table-frame">
+          <table class="admin-table" id="router-table">
+            <thead><tr><th>Routeur</th><th>Adresse WireGuard</th><th>Emplacement</th><th>État</th><th>Sessions</th><th>Actions</th></tr></thead>
+            <tbody id="router-rows"></tbody>
+          </table>
+          <p class="empty-state" id="router-empty" hidden>Aucun routeur réel reçu. Connectez le routeur configuré côté serveur.</p>
+        </div>
+      </section>
+
+      <section class="admin-section sessions-section" aria-labelledby="sessions-title">
+        <div class="section-heading admin-section-heading">
+          <div><p class="eyebrow">Accès clients</p><h2 id="sessions-title">Sessions hotspot</h2></div>
+          <div class="session-tools">
+            <label class="search-field" for="session-search"><span aria-hidden="true">⌕</span><input id="session-search" type="search" placeholder="Rechercher un ticket" autocomplete="off"></label>
+            <button class="admin-button secondary-button" id="create-access-open" type="button"><span aria-hidden="true">+</span> Créer un accès</button>
+          </div>
+        </div>
+        <div class="table-frame">
+          <table class="admin-table session-table">
+            <thead><tr><th>Identifiant</th><th>Routeur</th><th>Profil</th><th>Temps restant</th><th>Consommation</th><th>État</th><th></th></tr></thead>
+            <tbody id="session-rows"></tbody>
+          </table>
+          <p class="empty-state" id="session-empty" hidden>Aucune session ne correspond à cette recherche.</p>
+        </div>
+        <p class="table-footnote">Les sessions et compteurs sont lus depuis MikroTik. Le seuil d’alerte est fixé à 95 % du quota volume.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="admin-dialog" id="access-dialog" aria-labelledby="access-dialog-title">
+    <form id="access-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Hotspot</p><h2 id="access-dialog-title">Créer un accès</h2></div><button class="icon-button" type="button" data-close-dialog aria-label="Fermer">×</button></div>
+      <label>Identifiant du ticket<input name="username" required maxlength="40" autocomplete="off" placeholder="ticket4821"></label>
+      <label>Mot de passe du ticket<input name="password" required minlength="4" maxlength="64" autocomplete="new-password" placeholder="Mot de passe remis au client"></label>
+      <div class="form-grid"><label>Routeur<select name="routerId" id="access-router" required></select></label><label>Profil<select name="profile"><option value="offre-100F">100 FCFA — offre-100F</option><option value="offre-250F">250 FCFA — offre-250F</option><option value="offre-500F">500 FCFA — offre-500F</option></select></label></div>
+      <div class="form-grid"><label>Durée<input name="duration" required placeholder="1d"></label><label>Quota volume<input name="quota" required placeholder="500M"></label></div>
+      <p class="form-hint">Le compte sera créé directement sur le routeur connecté. En production, déclenchez cette opération après validation du paiement.</p>
+      <div class="dialog-actions"><button class="admin-button secondary-button" type="button" data-close-dialog>Annuler</button><button class="admin-button primary-button" type="submit">Créer l’accès</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="admin-dialog" id="connect-dialog" aria-labelledby="connect-dialog-title">
+    <form id="connect-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Accès protégé</p><h2 id="connect-dialog-title">Connexion au routeur</h2></div><button class="icon-button" type="button" data-close-dialog aria-label="Fermer">×</button></div>
+      <label>Jeton administrateur<input name="token" type="password" required autocomplete="current-password" placeholder="Jeton défini dans config.local.php"></label>
+      <p class="form-hint">Le jeton est gardé uniquement en mémoire de session dans ce navigateur. Le mot de passe MikroTik reste côté serveur.</p>
+      <div class="dialog-actions"><button class="admin-button secondary-button" type="button" data-close-dialog>Annuler</button><button class="admin-button primary-button" type="submit">Se connecter</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="admin-toast" role="status" aria-live="polite"></div>
+  <div id="overlay" class="overlay" hidden></div>
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
