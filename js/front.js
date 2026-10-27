@@ -6,9 +6,9 @@
   const refreshBtn = document.getElementById('refresh-users');
 
   const sampleOffers = [
-    {id:1,title:'Livraison express',price:'5€',desc:'Livraison en moins de 2h'},
-    {id:2,title:'Transport premium',price:'12€',desc:'Prise en charge VIP'},
-    {id:3,title:'Navette partagée',price:'3€',desc:'Option budget pour trajets courts'}
+    {id:1,title:'Livraison express',price:'500 FCFA',desc:'Livraison en moins de 2h'},
+    {id:2,title:'Transport premium',price:'1 200 FCFA',desc:'Prise en charge VIP'},
+    {id:3,title:'Navette partagée',price:'300 FCFA',desc:'Option budget pour trajets courts'}
   ];
 
   const sampleUsers = ['Alice','Bruno','Camille','David','Emma'];
